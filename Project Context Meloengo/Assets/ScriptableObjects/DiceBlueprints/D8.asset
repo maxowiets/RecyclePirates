@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc5c710c6b50c54996806960485041e, type: 3}
+  m_Name: D8
+  m_EditorClassIdentifier: 
+  nameOfDie: 
+  minimumDice: 1
+  maximumDice: 8
+  statBoosts: 0
+  statisticAnger: 1
+  statisticFear: 1
+  statisticHope: 1
+  statisticImpotence: 1
+  passive: 1
+  active: 0
+  passiveOrder: 2
+  abilityType: 2
+  activatedType: 0
