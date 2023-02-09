@@ -23,20 +23,46 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
 
     public PlayerFollowing playerFollowers;
+    public GameObject player;
+
+    public PersonSpawner personSpawner;
+    public EnergyManager energyManager;
+
+    private void Start()
+    {
+        ResetDay();
+    }
 
     public void StartConvinceMode(Person person)
     {
-        int amount = 0;
-        amount += Random.Range(0, 6) + 1; //playerDie
-        foreach (Follower personDie in playerFollowers.GetAllFollowers())
+        if (energyManager.currentEnergy > 0)
         {
-            amount += Random.Range(0, personDie.dieValue) + 1;
-        }
-        Debug.Log(amount);
-        if (amount >= person.convinceAmount)
-        {
-            Debug.Log("Succesful");
-            playerFollowers.AddToFollowerList(person.dieValue);
+            int amount = 0;
+            amount += Random.Range(0, 6) + 1; //playerDie
+            foreach (Follower followerDie in playerFollowers.GetAllFollowers())
+            {
+                amount += Random.Range(0, followerDie.GetDieValue()) + 1;
+            }
+            Debug.Log(amount);
+            if (amount >= person.convinceAmount)
+            {
+                Debug.Log("Succesful");
+                playerFollowers.AddToFollowerList(person.dieValue);
+                personSpawner.DestroyPerson(person);
+            }
+            else
+            {
+                person.enabled = false;
+            }
+            energyManager.UseEnergy();
         }
     }
+
+    public void ResetDay()
+    {
+        personSpawner.SpawnNewPersons();
+        energyManager.ResetEnergy();
+    }
+
+
 }
