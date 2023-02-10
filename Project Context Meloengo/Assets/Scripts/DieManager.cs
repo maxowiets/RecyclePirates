@@ -5,18 +5,7 @@ using UnityEngine;
 public class DieManager : MonoBehaviour
 {
     public List<Die> dieList;
-    public Die die;
     public float throwSpeed;
-
-    public void ThrowDice(int dieAmount)
-    {
-        for (int i = 0; i < dieAmount; i++)
-        {
-            var newDie = Instantiate(die, Camera.main.transform.position + Camera.main.transform.right * Random.Range(-5f,5f) + Vector3.down * Random.Range(1f, 3f), Quaternion.Euler(Camera.main.transform.forward));
-            newDie.rb.velocity = Camera.main.transform.forward * throwSpeed;
-            newDie.rb.angularVelocity = Random.onUnitSphere * 5f;
-        }
-    }
 
     public void ThrowDie(int dieNumber)
     {

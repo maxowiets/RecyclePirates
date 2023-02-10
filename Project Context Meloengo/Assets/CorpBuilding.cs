@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Person : MonoBehaviour
+public class CorpBuilding : MonoBehaviour
 {
     public int convinceAmount;
-    public int dieValue;
 
     public TextMeshPro tmpValue;
 
@@ -31,5 +30,6 @@ public class Person : MonoBehaviour
     private void OnDestroy()
     {
         HideStats();
+        GetComponentInChildren<MeshRenderer>().material.color = Color.green;
     }
 }

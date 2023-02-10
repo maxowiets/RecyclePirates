@@ -12,6 +12,10 @@ public class PlayerInteraction : MonoBehaviour
         {
             other.GetComponent<Person>().ShowStats();
         }
+        else if (other.GetComponent<CorpBuilding>())
+        {
+            other.GetComponent<CorpBuilding>().ShowStats();
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -26,6 +30,16 @@ public class PlayerInteraction : MonoBehaviour
                 }
             }
         }
+        else if (other.GetComponent<CorpBuilding>())
+        {
+            if (other.GetComponent<CorpBuilding>().interactable)
+            {
+                if (Input.GetKey(interactKey))
+                {
+                    GameManager.Instance.TakeOverCorpBuilding();
+                }
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -33,6 +47,10 @@ public class PlayerInteraction : MonoBehaviour
         if (other.GetComponent<Person>())
         {
             other.GetComponent<Person>().HideStats();
+        }
+        else if (other.GetComponent<CorpBuilding>())
+        {
+            other.GetComponent<CorpBuilding>().HideStats();
         }
     }
 }

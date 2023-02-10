@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public PersonSpawner personSpawner;
     public EnergyManager energyManager;
     public DieManager dieManager;
+    public CorpBuilding corpBuilding;
 
     private void Start()
     {
@@ -40,14 +41,13 @@ public class GameManager : MonoBehaviour
         {
             int amount = 0;
             amount += Random.Range(0, 6) + 1; //playerDie
-            //dieManager.ThrowDie(6);
+            dieManager.ThrowDie(6);
 
             foreach (Follower followerDie in playerFollowers.GetAllFollowers())
             {
                 amount += Random.Range(0, followerDie.GetDieValue()) + 1;
-                //dieManager.ThrowDie(followerDie.GetDieValue());
+                dieManager.ThrowDie(followerDie.GetDieValue());
             }
-            dieManager.ThrowDice(playerFollowers.GetAllFollowers().Count + 1);
 
             Debug.Log(amount);
             if (amount >= person.convinceAmount)
@@ -64,10 +64,40 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void TakeOverCorpBuilding()
+    {
+        if (energyManager.currentEnergy > 0)
+        {
+            int amount = 0;
+            amount += Random.Range(0, 6) + 1; //playerDie
+            dieManager.ThrowDie(6);
+
+            foreach (Follower followerDie in playerFollowers.GetAllFollowers())
+            {
+                amount += Random.Range(0, followerDie.GetDieValue()) + 1;
+                dieManager.ThrowDie(followerDie.GetDieValue());
+            }
+
+            if (amount >= corpBuilding.convinceAmount)
+            {
+                Destroy(corpBuilding);
+            }
+            else
+            {
+                corpBuilding.interactable = false;
+            }
+            energyManager.UseEnergy();
+        }
+    }
+
     public void ResetDay()
     {
         personSpawner.SpawnNewPersons();
         energyManager.ResetEnergy();
+        if (corpBuilding != null)
+        {
+            corpBuilding.interactable = true;
+        }
     }
 
 
