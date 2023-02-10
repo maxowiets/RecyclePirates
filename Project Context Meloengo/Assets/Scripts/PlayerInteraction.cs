@@ -18,9 +18,12 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (other.GetComponent<Person>())
         {
-            if (Input.GetKey(interactKey))
+            if (other.GetComponent<Person>().interactable)
             {
-                GameManager.Instance.StartConvinceMode(other.GetComponent<Person>());
+                if (Input.GetKey(interactKey))
+                {
+                    GameManager.Instance.StartConvinceMode(other.GetComponent<Person>());
+                }
             }
         }
     }

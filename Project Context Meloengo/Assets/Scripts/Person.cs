@@ -10,6 +10,8 @@ public class Person : MonoBehaviour
 
     public TextMeshPro tmpValue;
 
+    public bool interactable = true;
+
     private void Start()
     {
         tmpValue.text = convinceAmount.ToString();
