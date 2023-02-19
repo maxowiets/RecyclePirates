@@ -13,6 +13,8 @@ public class PlayerFollowing : MonoBehaviour
 
     Vector3 previousPosition;
 
+    bool convinceMode = false;
+
     private void Start()
     {
         lastMoveDirection = transform.forward;
@@ -20,12 +22,59 @@ public class PlayerFollowing : MonoBehaviour
 
     private void Update()
     {
-        //set heading direction
-        if ((transform.position - previousPosition).magnitude > 0)
+        if (!convinceMode)
         {
-            lastMoveDirection = (transform.position - previousPosition).normalized * followerDistance;
-            previousPosition = transform.position;
+            //set heading direction
+            if ((transform.position - previousPosition).magnitude > 0)
+            {
+                lastMoveDirection = (transform.position - previousPosition).normalized * followerDistance;
+                previousPosition = transform.position;
+            }
+
+            //set destination of followers
+            int remainingFollowers = followers.Count;
+            int currentRow = 1;
+            int currentFollower = 0;
+            while (remainingFollowers > 0)
+            {
+                Vector3 startingOffset;
+                if (remainingFollowers >= formationWidth)
+                {
+                    startingOffset = Quaternion.Euler(0, -90, 0) * (lastMoveDirection * (formationWidth - 1) * 0.5f) - lastMoveDirection * currentRow;
+                    for (int i = 0; i < formationWidth; i++)
+                    {
+                        followers[currentFollower].SetDestination(transform.position + startingOffset + Quaternion.Euler(0, 90, 0) * (lastMoveDirection * i));
+                        currentFollower++;
+                    }
+                }
+                else
+                {
+                    startingOffset = Quaternion.Euler(0, -90, 0) * (lastMoveDirection * ((remainingFollowers % formationWidth - 1) * 0.5f)) - lastMoveDirection * currentRow;
+                    for (int i = 0; i < remainingFollowers % formationWidth; i++)
+                    {
+                        followers[currentFollower].SetDestination(transform.position + startingOffset + Quaternion.Euler(0, 90, 0) * (lastMoveDirection * i));
+                        currentFollower++;
+                    }
+                }
+            
+                remainingFollowers -= formationWidth;
+                currentRow++;
+            }
         }
+    }
+
+    public void AddToFollowerList(int dieValue)
+    {
+        var newFollower = Instantiate(follower, transform.position, Quaternion.identity);
+        newFollower.GetComponent<Follower>().SetDieValue(dieValue);
+        followers.Add(newFollower);
+    }
+
+    public void EnableConvinceMode()
+    {
+        convinceMode = true;
+
+        Vector3 convinceModeOffset = new Vector3(0.7f * followerDistance, 0, 0.5f * followerDistance);
 
         //set destination of followers
         int remainingFollowers = followers.Count;
@@ -36,33 +85,41 @@ public class PlayerFollowing : MonoBehaviour
             Vector3 startingOffset;
             if (remainingFollowers >= formationWidth)
             {
-                startingOffset = Quaternion.Euler(0, -90, 0) * (lastMoveDirection * (formationWidth - 1) * 0.5f) - lastMoveDirection * currentRow;
+                startingOffset = Quaternion.Euler(0, -90, 0) * (convinceModeOffset * (formationWidth - 1) * 0.5f) - convinceModeOffset * currentRow;
                 for (int i = 0; i < formationWidth; i++)
                 {
-                    followers[currentFollower].SetDestination(transform.position + startingOffset + Quaternion.Euler(0, 90, 0) * (lastMoveDirection * i));
+                    followers[currentFollower].transform.position = (transform.position + startingOffset + Quaternion.Euler(0, 90, 0) * (convinceModeOffset * i) + followers[currentFollower].GetDestinationOffset());
                     currentFollower++;
                 }
             }
             else
             {
-                startingOffset = Quaternion.Euler(0, -90, 0) * (lastMoveDirection * ((remainingFollowers % formationWidth - 1) * 0.5f)) - lastMoveDirection * currentRow;
+                startingOffset = Quaternion.Euler(0, -90, 0) * (convinceModeOffset * ((remainingFollowers % formationWidth - 1) * 0.5f)) - convinceModeOffset * currentRow;
                 for (int i = 0; i < remainingFollowers % formationWidth; i++)
                 {
-                    followers[currentFollower].SetDestination(transform.position + startingOffset + Quaternion.Euler(0, 90, 0) * (lastMoveDirection * i));
+                    followers[currentFollower].transform.position = (transform.position + startingOffset + Quaternion.Euler(0, 90, 0) * (convinceModeOffset * i) + followers[currentFollower].GetDestinationOffset());
                     currentFollower++;
                 }
             }
-            
+
             remainingFollowers -= formationWidth;
             currentRow++;
         }
+        foreach (Follower follower in followers)
+        {
+            follower.enabled = false;
+            follower.DisableWalking();
+        }
     }
 
-    public void AddToFollowerList(int dieValue)
+    public void DisableConvinceMode()
     {
-        var newFollower = Instantiate(follower, transform.position, Quaternion.identity);
-        newFollower.GetComponent<Follower>().SetDieValue(dieValue);
-        followers.Add(newFollower);
+        convinceMode = false;
+        foreach (Follower follower in followers)
+        {
+            follower.transform.position = transform.position;
+            follower.enabled = true;
+        }
     }
 
     public List<Follower> GetAllFollowers()

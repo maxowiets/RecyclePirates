@@ -22,9 +22,10 @@ public class GameManager : MonoBehaviour
 
     private static GameManager _instance;
 
+    public CharacterController playerController;
     public PlayerFollowing playerFollowers;
-    public GameObject player;
 
+    public ConvinceMode convinceMode;
     public PersonSpawner personSpawner;
     public EnergyManager energyManager;
     public DieManager dieManager;
@@ -39,27 +40,8 @@ public class GameManager : MonoBehaviour
     {
         if (energyManager.currentEnergy > 0)
         {
-            int amount = 0;
-            amount += Random.Range(0, 6) + 1; //playerDie
-            dieManager.ThrowDie(6);
+            convinceMode.StartConvinceMode(person);
 
-            foreach (Follower followerDie in playerFollowers.GetAllFollowers())
-            {
-                amount += Random.Range(0, followerDie.GetDieValue()) + 1;
-                dieManager.ThrowDie(followerDie.GetDieValue());
-            }
-
-            Debug.Log(amount);
-            if (amount >= person.convinceAmount)
-            {
-                Debug.Log("Succesful");
-                playerFollowers.AddToFollowerList(person.dieValue);
-                personSpawner.DestroyPerson(person);
-            }
-            else
-            {
-                person.interactable = false;
-            }
             energyManager.UseEnergy();
         }
     }

@@ -21,7 +21,7 @@ public class Follower : MonoBehaviour
         movespeed = Random.Range(4, 8);
         anim = GetComponentInChildren<Animator>();
         anim.speed = movespeed / 6f;
-        Vector2 randOffset = Random.insideUnitCircle * 0.3f;
+        Vector2 randOffset = Random.insideUnitCircle * 0.2f;
         destinationOffset = new Vector3(randOffset.x, 0, randOffset.y);
     }
 
@@ -51,5 +51,15 @@ public class Follower : MonoBehaviour
     public void SetDestination(Vector3 position)
     {
         destination = position;
+    }
+
+    public Vector3 GetDestinationOffset()
+    {
+        return destinationOffset;
+    }
+
+    public void DisableWalking()
+    {
+        anim.SetBool("Walking", false);
     }
 }

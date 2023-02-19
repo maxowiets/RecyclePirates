@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
     public Transform playerTransform;
     public float smoothing;
 
-    Vector3 offset;
+    public Vector3 offset;
     // Start is called before the first frame update
     void Start()
     {
