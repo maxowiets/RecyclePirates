@@ -15,6 +15,7 @@ public class Follower : MonoBehaviour
     Vector3 destination;
     Vector3 destinationOffset;
     Animator anim;
+    FollowerCard card;
 
     private void Start()
     {
@@ -23,6 +24,9 @@ public class Follower : MonoBehaviour
         anim.speed = movespeed / 6f;
         Vector2 randOffset = Random.insideUnitCircle * 0.2f;
         destinationOffset = new Vector3(randOffset.x, 0, randOffset.y);
+        card = GetComponentInChildren<FollowerCard>();
+        card.SetDieValue(dieValue);
+        card.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -46,6 +50,7 @@ public class Follower : MonoBehaviour
     public void SetDieValue(int newDieValue)
     {
         dieValue = newDieValue;
+        card?.SetDieValue(dieValue);
     }
 
     public void SetDestination(Vector3 position)
@@ -61,5 +66,15 @@ public class Follower : MonoBehaviour
     public void DisableWalking()
     {
         anim.SetBool("Walking", false);
+    }
+
+    public void OnHoverEnter()
+    {
+        card.gameObject.SetActive(true);
+    }
+
+    public void OnHoverExit()
+    {
+        card.gameObject.SetActive(false);
     }
 }
