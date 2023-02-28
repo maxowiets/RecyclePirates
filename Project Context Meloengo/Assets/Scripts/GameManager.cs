@@ -41,8 +41,6 @@ public class GameManager : MonoBehaviour
         if (energyManager.currentEnergy > 0)
         {
             convinceMode.StartConvinceMode(person);
-
-            energyManager.UseEnergy();
         }
     }
 
@@ -81,6 +79,4 @@ public class GameManager : MonoBehaviour
             corpBuilding.interactable = true;
         }
     }
-
-
 }

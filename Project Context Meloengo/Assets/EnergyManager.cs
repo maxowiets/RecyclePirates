@@ -27,8 +27,14 @@ public class EnergyManager : MonoBehaviour
         UpdateUI();
     }
 
+    public void IncreaseEnergy()
+    {
+        currentEnergy++;
+        UpdateUI();
+    }
+
     void UpdateUI()
     {
-        energySprite.GetComponent<RectTransform>().sizeDelta = new Vector2(currentEnergy * 100, 100);
+        energySprite.GetComponent<RectTransform>().sizeDelta = new Vector2(currentEnergy * 85, 85);
     }
 }

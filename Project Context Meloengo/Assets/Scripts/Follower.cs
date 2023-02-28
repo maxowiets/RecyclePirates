@@ -19,7 +19,7 @@ public class Follower : MonoBehaviour
 
     private void Start()
     {
-        movespeed = Random.Range(4, 8);
+        movespeed = Random.Range(4f, 8f);
         anim = GetComponentInChildren<Animator>();
         anim.speed = movespeed / 6f;
         Vector2 randOffset = Random.insideUnitCircle * 0.2f;
