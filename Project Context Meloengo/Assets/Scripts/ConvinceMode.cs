@@ -92,10 +92,12 @@ public class ConvinceMode : MonoBehaviour
         if (dieAmount >= currentPerson.convinceAmount)
         {
             newPersonConvinced = true;
+            GameManager.Instance.energyManager.IncreaseEnergy();
         }
         else
         {
-            currentPerson.interactable = false;
+            currentPerson.FailInteraction();
+            GameManager.Instance.energyManager.UseEnergy();
         }
     }
 

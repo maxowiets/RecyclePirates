@@ -12,6 +12,8 @@ public class Person : MonoBehaviour
 
     public bool interactable = true;
 
+    public GameObject cloud;
+
     private void Start()
     {
         tmpValue.text = convinceAmount.ToString();
@@ -20,12 +22,18 @@ public class Person : MonoBehaviour
 
     public void ShowStats()
     {
-        tmpValue.gameObject.SetActive(true);
+        if (interactable) tmpValue.gameObject.SetActive(true);
     }
 
     public void HideStats()
     {
         tmpValue.gameObject.SetActive(false);
+    }
+
+    public void FailInteraction()
+    {
+        interactable = false;
+        cloud.SetActive(true);
     }
 
     private void OnDestroy()
