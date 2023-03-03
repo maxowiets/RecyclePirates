@@ -28,11 +28,11 @@ public class TimeManager : MonoBehaviour
         currentTime += Time.deltaTime;
         if (currentTime >= dayDuration)
         {
-            ResetDay();
+            GameManager.Instance.ResetDay();
         }
     }
 
-    public void ChangeRotationSpeed(float newSpeed)
+    public void SetRotationSpeed(float newSpeed)
     {
         rotationSpeedMultiplier = newSpeed;
     }

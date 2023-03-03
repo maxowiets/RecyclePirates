@@ -65,6 +65,9 @@ public class ConvinceMode : MonoBehaviour
         //set camera position
         Camera.main.transform.position = convinceAreaTransform.position + Camera.main.GetComponent<CameraFollow>().offset;
         Camera.main.GetComponent<CameraFollow>().enabled = false;
+
+        //set time multiplier to 0
+        GameManager.Instance.timeManager.SetRotationSpeed(0);
     }
 
     void ThrowDice()
@@ -124,5 +127,8 @@ public class ConvinceMode : MonoBehaviour
         //set camera position
         Camera.main.transform.position = GameManager.Instance.playerController.transform.position;
         Camera.main.GetComponent<CameraFollow>().enabled = true;
+
+        //set time multiplier back to 1
+        GameManager.Instance.timeManager.SetRotationSpeed(1);
     }
 }

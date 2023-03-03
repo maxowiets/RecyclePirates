@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public EnergyManager energyManager;
     public DieManager dieManager;
     public CorpBuilding corpBuilding;
+    public TimeManager timeManager;
 
     private void Start()
     {
@@ -78,5 +79,6 @@ public class GameManager : MonoBehaviour
         {
             corpBuilding.interactable = true;
         }
+        timeManager.ResetDay();
     }
 }
