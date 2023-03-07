@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class ConvinceMode : MonoBehaviour
 {
-    bool convincing = false;
-
     int dieAmount = 0;
 
     Person currentPerson;
-    bool newPersonConvinced = false;
 
     Vector3 playerLastPos;
     Vector3 personLastPos;
@@ -18,33 +15,16 @@ public class ConvinceMode : MonoBehaviour
     public Vector3 personConvincePos;
     public Transform convinceAreaTransform;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject convinceUI;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if (convincing)
-            {
-                ThrowDice();
-                Invoke("CalculateDieAmount", 1f);
-                Invoke("CheckIfPersonConvinced", 2f);
-                Invoke("ReturnToLevel", 3f);
-                convincing = false;
-            }
-        }
+        convinceUI.SetActive(false);
     }
 
     public void StartConvinceMode(Person person)
     {
         currentPerson = person;
-        newPersonConvinced = false;
-        convincing = true;
 
         //PlayerStuff
         CharacterController player = GameManager.Instance.playerController;
@@ -61,6 +41,7 @@ public class ConvinceMode : MonoBehaviour
         //set person position
         personLastPos = currentPerson.transform.position;
         currentPerson.transform.position = personConvincePos + convinceAreaTransform.position;
+        currentPerson.StartConvinceMode();
 
         //set camera position
         Camera.main.transform.position = convinceAreaTransform.position + Camera.main.GetComponent<CameraFollow>().offset;
@@ -68,6 +49,18 @@ public class ConvinceMode : MonoBehaviour
 
         //set time multiplier to 0
         GameManager.Instance.timeManager.SetRotationSpeed(0);
+
+        //enable ui
+        convinceUI.SetActive(true);
+    }
+
+    public void Convince()
+    {
+        convinceUI.SetActive(false);
+        Invoke("ThrowDice", 1f);
+        Invoke("CalculateDieAmount", 2f);
+        Invoke("CheckIfPersonConvinced", 3f);
+        Invoke("CanContinueConvinving", 4f);
     }
 
     void ThrowDice()
@@ -92,20 +85,48 @@ public class ConvinceMode : MonoBehaviour
 
     void CheckIfPersonConvinced()
     {
-        if (dieAmount >= currentPerson.convinceAmount)
+        int conv = currentPerson.CheckIfConvinced(dieAmount);
+
+        if (conv == 3)
         {
-            newPersonConvinced = true;
             GameManager.Instance.energyManager.IncreaseEnergy();
         }
-        else
+        else if (conv == 2)
         {
-            currentPerson.FailInteraction();
+            //
+        }
+        else if (conv == 1)
+        {
             GameManager.Instance.energyManager.UseEnergy();
         }
     }
 
-    void ReturnToLevel()
+    void CanContinueConvinving()
     {
+        //Exit Convince Mode if...
+        if (GameManager.Instance.energyManager.currentEnergy == 0 || currentPerson.mentalState >= 3 || currentPerson.mentalState <= 0)
+        {
+            if (currentPerson.mentalState >= 3)
+            {
+                //Increase commanders EE
+            }
+            else if (currentPerson.mentalState <= 0)
+            {
+                //Decrease commanders EE
+            }
+            ReturnToLevel();
+        }
+
+        //Continue Convince Mode if...
+        else if(GameManager.Instance.energyManager.currentEnergy > 0)
+        {
+            convinceUI.SetActive(true);
+        }
+    }
+
+    public void ReturnToLevel()
+    {
+        Debug.Log("test");
         //set player position
         GameManager.Instance.playerController.transform.position = playerLastPos;
 
@@ -118,11 +139,7 @@ public class ConvinceMode : MonoBehaviour
         currentPerson.transform.position = personLastPos;
 
         //person joins party
-        if (newPersonConvinced)
-        {
-            GameManager.Instance.playerFollowers.AddToFollowerList(currentPerson.dieValue);
-            GameManager.Instance.personSpawner.DestroyPerson(currentPerson);
-        }
+        currentPerson.ExitConvinceMode();
 
         //set camera position
         Camera.main.transform.position = GameManager.Instance.playerController.transform.position;
@@ -130,5 +147,8 @@ public class ConvinceMode : MonoBehaviour
 
         //set time multiplier back to 1
         GameManager.Instance.timeManager.SetRotationSpeed(1);
+
+        //disable ui
+        convinceUI.SetActive(false);
     }
 }
