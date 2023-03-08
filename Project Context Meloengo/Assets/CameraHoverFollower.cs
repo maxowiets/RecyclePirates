@@ -32,5 +32,13 @@ public class CameraHoverFollower : MonoBehaviour
                 currentFollower=null;
             }
         }
+
+        if (currentFollower != null)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                currentFollower.SelectFollower();
+            }
+        }
     }
 }

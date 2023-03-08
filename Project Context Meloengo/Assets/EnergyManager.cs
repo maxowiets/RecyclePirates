@@ -10,6 +10,15 @@ public class EnergyManager : MonoBehaviour
 
     public Image energySprite;
 
+    int width;
+    int height;
+
+    private void Awake()
+    {
+        width = (int)energySprite.GetComponent<RectTransform>().sizeDelta.x;
+        height = (int)energySprite.GetComponent<RectTransform>().sizeDelta.y;
+    }
+
     private void Start()
     {
         UpdateUI();
@@ -35,6 +44,6 @@ public class EnergyManager : MonoBehaviour
 
     void UpdateUI()
     {
-        energySprite.GetComponent<RectTransform>().sizeDelta = new Vector2(currentEnergy * 85, 85);
+        energySprite.GetComponent<RectTransform>().sizeDelta = new Vector2(currentEnergy * width, height);
     }
 }

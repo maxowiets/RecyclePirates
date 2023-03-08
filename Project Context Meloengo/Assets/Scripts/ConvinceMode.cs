@@ -27,13 +27,14 @@ public class ConvinceMode : MonoBehaviour
         currentPerson = person;
 
         //PlayerStuff
-        CharacterController player = GameManager.Instance.playerController;
+        PlayerMovement player = GameManager.Instance.playerMovement;
         //set player position
         playerLastPos = player.transform.position;
         player.transform.position = playerConvincePos + convinceAreaTransform.position;
 
         //disable player movement
         player.enabled = false;
+        GameManager.Instance.playerController.enabled = false;
 
         //set followers positions
         GameManager.Instance.playerFollowers.EnableConvinceMode();
@@ -51,6 +52,11 @@ public class ConvinceMode : MonoBehaviour
         GameManager.Instance.timeManager.SetRotationSpeed(0);
 
         //enable ui
+        Invoke("EnableUI", 0.1f);
+    }
+
+    void EnableUI()
+    {
         convinceUI.SetActive(true);
     }
 
@@ -128,9 +134,10 @@ public class ConvinceMode : MonoBehaviour
     {
         Debug.Log("test");
         //set player position
-        GameManager.Instance.playerController.transform.position = playerLastPos;
+        GameManager.Instance.playerMovement.transform.position = playerLastPos;
 
         //enable player
+        GameManager.Instance.playerMovement.enabled = true;
         GameManager.Instance.playerController.enabled = true;
 
         //set followers positions
@@ -142,7 +149,7 @@ public class ConvinceMode : MonoBehaviour
         currentPerson.ExitConvinceMode();
 
         //set camera position
-        Camera.main.transform.position = GameManager.Instance.playerController.transform.position;
+        Camera.main.transform.position = GameManager.Instance.playerMovement.transform.position;
         Camera.main.GetComponent<CameraFollow>().enabled = true;
 
         //set time multiplier back to 1

@@ -16,6 +16,8 @@ public class Follower : MonoBehaviour
     Vector3 destinationOffset;
     Animator anim;
     FollowerCard card;
+    bool isCommander;
+    Renderer rend;
 
     private void Start()
     {
@@ -27,6 +29,7 @@ public class Follower : MonoBehaviour
         card = GetComponentInChildren<FollowerCard>();
         card.SetDieValue(dieValue);
         card.gameObject.SetActive(false);
+        rend = GetComponentInChildren<Renderer>();
     }
 
     private void Update()
@@ -76,5 +79,34 @@ public class Follower : MonoBehaviour
     public void OnHoverExit()
     {
         card.gameObject.SetActive(false);
+    }
+
+    public void SelectFollower()
+    {
+        if (isCommander)
+        {
+            UnassignAsCommander();
+        }
+        else
+        {
+            AssignAsCommander();
+        }
+    }
+
+    void AssignAsCommander()
+    {
+        if (GameManager.Instance.playerFollowers.currentCommandoAmount < GameManager.Instance.playerFollowers.maxCommanderSize)
+        {
+            rend.material.color = Color.blue;
+            isCommander = true;
+            GameManager.Instance.playerFollowers.AddCommander(this);
+        }
+    }
+
+    void UnassignAsCommander()
+    {
+        rend.material.color = Color.white;
+        isCommander = false;
+        GameManager.Instance.playerFollowers.RemoveCommander(this);
     }
 }

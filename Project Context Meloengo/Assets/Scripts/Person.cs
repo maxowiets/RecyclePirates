@@ -76,7 +76,7 @@ public class Person : MonoBehaviour
 
     public void ExitConvinceMode()
     {
-        bar.SetActive(true);
+        bar.SetActive(false);
         if (mentalState >= 3)
         {
             SucceedInteraction();
@@ -110,7 +110,14 @@ public class Person : MonoBehaviour
 
     void SetBarSize()
     {
-        bar.transform.localScale = new Vector3(1, mentalState, 1);
+        for (int i = 0; i < 3; i++)
+        {
+            bar.transform.GetChild(i).gameObject.SetActive(false);
+        }
+        for (int i = 0; i < mentalState; i++)
+        {
+            bar.transform.GetChild(i).gameObject.SetActive(true);
+        }
     }
 
     private void OnDestroy()

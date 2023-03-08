@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float movespeed = 1f;
     CharacterController controller;
+    public Animator anim;
 
     private void Awake()
     {
@@ -23,5 +24,18 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 moveVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         controller.Move(moveVector * movespeed * Time.deltaTime);
+        if (controller.velocity.magnitude > 0.3f)
+        {
+            anim.SetBool("Walking", true);
+        }
+        else
+        {
+            anim.SetBool("Walking", false);
+        }
+    }
+
+    private void OnDisable()
+    {
+        anim.SetBool("Walking", false);
     }
 }

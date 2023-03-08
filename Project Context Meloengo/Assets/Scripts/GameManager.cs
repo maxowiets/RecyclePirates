@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
 
     public CharacterController playerController;
+    public PlayerMovement playerMovement;
     public PlayerFollowing playerFollowers;
 
     public ConvinceMode convinceMode;

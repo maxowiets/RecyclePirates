@@ -14,6 +14,9 @@ public class PlayerFollowing : MonoBehaviour
     Vector3 previousPosition;
     FollowMode followMode;
 
+    public int maxCommanderSize = 5;
+    public int currentCommandoAmount;
+
     private void Start()
     {
         lastMoveDirection = transform.forward;
@@ -187,6 +190,33 @@ public class PlayerFollowing : MonoBehaviour
     public List<Follower> GetAllFollowers()
     {
         return followers;
+    }
+
+    public void AddCommander(Follower newCommander)
+    {
+        if (currentCommandoAmount < maxCommanderSize)
+        {
+            followers[followers.IndexOf(newCommander)] = followers[currentCommandoAmount];
+            followers[currentCommandoAmount] = newCommander;
+            currentCommandoAmount++;
+        }
+        else
+        {
+            Debug.Log("Too Many Commanders");
+        }
+    }
+
+    public void RemoveCommander(Follower oldCommander)
+    {
+        currentCommandoAmount--;
+        int oldCommanderIndex = followers.IndexOf(oldCommander);
+
+        for (int i = oldCommanderIndex; i < currentCommandoAmount; i++)
+        {
+            followers[i] = followers[i + 1];
+        }
+
+        followers[currentCommandoAmount] = oldCommander;
     }
 }
 
