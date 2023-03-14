@@ -11,7 +11,7 @@ public class TimeManager : MonoBehaviour
     public Transform sun;
     Quaternion startTransformSun;
     float rotationSpeed;
-    float rotationSpeedMultiplier = 1;
+    float timeSpeedMultiplier = 1;
 
 
     // Start is called before the first frame update
@@ -24,8 +24,8 @@ public class TimeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        sun.RotateAround(sun.position, Vector3.forward, rotationSpeed * rotationSpeedMultiplier * Time.deltaTime);
-        currentTime += Time.deltaTime;
+        sun.RotateAround(sun.position, Vector3.forward, rotationSpeed * timeSpeedMultiplier * Time.deltaTime);
+        currentTime += timeSpeedMultiplier * Time.deltaTime;
         if (currentTime >= dayDuration)
         {
             GameManager.Instance.ResetDay();
@@ -34,13 +34,19 @@ public class TimeManager : MonoBehaviour
 
     public void SetRotationSpeed(float newSpeed)
     {
-        rotationSpeedMultiplier = newSpeed;
+        timeSpeedMultiplier = newSpeed;
+        Debug.Log(newSpeed);
     }
 
     public void ResetDay()
     {
         currentTime = 0;
-        rotationSpeedMultiplier = 1;
+        timeSpeedMultiplier = 1;
         sun.rotation = startTransformSun;
+    }
+
+    public float GetRemainingTime()
+    {
+        return dayDuration - currentTime;
     }
 }

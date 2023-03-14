@@ -109,4 +109,9 @@ public class Follower : MonoBehaviour
         isCommander = false;
         GameManager.Instance.playerFollowers.RemoveCommander(this);
     }
+
+    public Animator GetAnimator()
+    {
+        return anim;
+    }
 }
