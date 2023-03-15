@@ -18,6 +18,8 @@ public class Person : MonoBehaviour
 
     public GameObject bar;
 
+    public CombatSpeechBubble combatSpeechBubble;
+
     private void Start()
     {
         tmpValue.text = convinceAmount.ToString();
@@ -43,15 +45,18 @@ public class Person : MonoBehaviour
         if (thrownDiceAmount >= convinceAmount)
         {
             IncreaseMentalState();
+            combatSpeechBubble.PopSpeechBubble(mentalState);
             return 3;
         }
         else if (thrownDiceAmount > (int)((float)convinceAmount * 0.7f))
         {
+            combatSpeechBubble.PopSpeechBubble(mentalState);
             return 2;
         }
         else
         {
             DecreaseMentalState();
+            combatSpeechBubble.PopSpeechBubble(mentalState);
             return 1;
         }
     }

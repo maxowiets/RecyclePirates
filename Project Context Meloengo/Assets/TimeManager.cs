@@ -35,7 +35,6 @@ public class TimeManager : MonoBehaviour
     public void SetRotationSpeed(float newSpeed)
     {
         timeSpeedMultiplier = newSpeed;
-        Debug.Log(newSpeed);
     }
 
     public void ResetDay()

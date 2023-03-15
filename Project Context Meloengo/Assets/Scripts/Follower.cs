@@ -14,33 +14,35 @@ public class Follower : MonoBehaviour
 
     Vector3 destination;
     Vector3 destinationOffset;
-    Animator anim;
+    public Animator characterAnimator;
     FollowerCard card;
     bool isCommander;
     Renderer rend;
 
+    CampQuoteSpeechBubble speechBubble;
+
     private void Start()
     {
         movespeed = Random.Range(4f, 8f);
-        anim = GetComponentInChildren<Animator>();
-        anim.speed = movespeed / 6f;
+        characterAnimator.speed = movespeed / 6f;
         Vector2 randOffset = Random.insideUnitCircle * 0.2f;
         destinationOffset = new Vector3(randOffset.x, 0, randOffset.y);
         card = GetComponentInChildren<FollowerCard>();
         card.SetDieValue(dieValue);
         card.gameObject.SetActive(false);
         rend = GetComponentInChildren<Renderer>();
+        speechBubble = GetComponentInChildren<CampQuoteSpeechBubble>();
     }
 
     private void Update()
     {
         if (Vector3.Distance(transform.position, destination + destinationOffset) < 0.01f)
         {
-            anim.SetBool("Walking", false);
+            characterAnimator.SetBool("Walking", false);
         }
         else
         {
-            anim.SetBool("Walking", true);
+            characterAnimator.SetBool("Walking", true);
         }
         transform.position = Vector3.MoveTowards(transform.position, destination + destinationOffset, movespeed * Time.deltaTime);
     }
@@ -68,7 +70,7 @@ public class Follower : MonoBehaviour
 
     public void DisableWalking()
     {
-        anim.SetBool("Walking", false);
+        characterAnimator.SetBool("Walking", false);
     }
 
     public void OnHoverEnter()
@@ -110,8 +112,13 @@ public class Follower : MonoBehaviour
         GameManager.Instance.playerFollowers.RemoveCommander(this);
     }
 
-    public Animator GetAnimator()
+    public Animator GetCharacterAnimator()
     {
-        return anim;
+        return characterAnimator;
+    }
+
+    public void CampQuote()
+    {
+        speechBubble.PopSpeechBubble();
     }
 }

@@ -91,7 +91,7 @@ public class Camp : MonoBehaviour
             allFollowersReady = true;
             foreach (Follower follower in GameManager.Instance.playerFollowers.GetAllFollowers())
             {
-                if (follower.GetAnimator().GetBool("Walking"))
+                if (follower.GetCharacterAnimator().GetBool("Walking"))
                 {
                     allFollowersReady = false;
                     Debug.Log("FOLLOWER WALKING");
@@ -120,6 +120,14 @@ public class Camp : MonoBehaviour
         int time = 0;
         while (true)
         {
+            for (int i = 0; i < Mathf.CeilToInt(followerAmount / 7f); i++)
+            {
+                Invoke("ActivateSpeechBubble", Random.Range(0, 0.7f));
+                if (Random.Range(0, 3) == 0)
+                {
+                    i++;
+                }
+            }
             time++;
             for (int i = 0; i < followerAmount; i++)
             {
@@ -127,5 +135,10 @@ public class Camp : MonoBehaviour
             }
             yield return new WaitForSeconds(1f);
         }
+    }
+
+    void ActivateSpeechBubble()
+    {
+        GameManager.Instance.playerFollowers.GetAllFollowers()[Random.Range(0, GameManager.Instance.playerFollowers.GetAllFollowers().Count)].CampQuote();
     }
 }
