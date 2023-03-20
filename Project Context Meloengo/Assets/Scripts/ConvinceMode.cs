@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ConvinceMode : MonoBehaviour
@@ -17,10 +18,13 @@ public class ConvinceMode : MonoBehaviour
 
     public GameObject convinceUI;
 
+    public TextMeshProUGUI diceAmountText;
+
     int convinced;
 
     private void Start()
     {
+        diceAmountText.gameObject.SetActive(false);
         convinceUI.SetActive(false);
     }
 
@@ -66,7 +70,6 @@ public class ConvinceMode : MonoBehaviour
         //Preprebattle Text
         if (GameManager.Instance.convoMode == ConvoMode.PREBATTLE)
         {
-            Debug.Log("AAAA");
             CanContinueConvinving();
             return;
         }
@@ -107,6 +110,9 @@ public class ConvinceMode : MonoBehaviour
         {
             dieAmount += Random.Range(0, followerDie.GetDieValue()) + 1;
         }
+
+        diceAmountText.gameObject.SetActive(true);
+        diceAmountText.text = dieAmount.ToString(); 
     }
 
     void CheckIfPersonConvinced()
@@ -129,9 +135,9 @@ public class ConvinceMode : MonoBehaviour
 
     void CanContinueConvinving()
     {
+        diceAmountText.gameObject.SetActive(false);
         if (GameManager.Instance.convoMode == ConvoMode.PREBATTLE)
         {
-            Debug.Log("TEST");
             GameManager.Instance.convoMode = ConvoMode.PREPREBATTLE;
             GameManager.Instance.talkWithPerson.currentDialog = currentPerson.prePreBattleDialog[Random.Range(0, currentPerson.prePreBattleDialog.Count)];
             GameManager.Instance.ContinueConversation();

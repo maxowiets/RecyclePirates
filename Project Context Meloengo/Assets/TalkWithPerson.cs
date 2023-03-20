@@ -12,11 +12,10 @@ public class TalkWithPerson : MonoBehaviour
     bool isTalking = false;
     int index;
 
-    public GameObject playerSpeechBubble;
-    public GameObject personSpeechBubble;
-    public RawImage NPCUI;
-    public TextMeshProUGUI playerText;
-    public TextMeshProUGUI personText;
+    public GameObject speechBubble;
+    public RawImage playerUI;
+    public RawImage personUI;
+    public TextMeshProUGUI speechText;
 
     private void Update()
     {
@@ -35,12 +34,13 @@ public class TalkWithPerson : MonoBehaviour
         //reset variables
         isTalking = false;
         index = 0;
-        playerSpeechBubble.SetActive(false);
-        personSpeechBubble.SetActive(false);
+        speechBubble.SetActive(false);
         GameManager.Instance.timeManager.SetRotationSpeed(0f);
         GameManager.Instance.playerMovement.enabled = false;
         GameManager.Instance.playerController.enabled = false;
-        NPCUI.texture = GameManager.Instance.currentPerson.characterImageUI;
+        playerUI.material.color = Color.white;
+        personUI.material.color = Color.white;
+        personUI.texture = GameManager.Instance.currentPerson.characterImageUI;
         Invoke("NextDialog", 1f);
     }
 
@@ -52,17 +52,18 @@ public class TalkWithPerson : MonoBehaviour
             return;
         }
         isTalking = true;
+        speechBubble.SetActive(true);
+        speechText.text = currentDialog.dialogText[index];
+
         if (currentDialog.isPlayerTalking[index])
         {
-            playerSpeechBubble.SetActive(true);
-            personSpeechBubble.SetActive(false);
-            playerText.text = currentDialog.dialogText[index];
+            playerUI.material.color = Color.white;
+            personUI.material.color = new Color(0.3f, 0.3f, 0.3f);
         }
         else
         {
-            playerSpeechBubble.SetActive(false);
-            personSpeechBubble.SetActive(true);
-            personText.text = currentDialog.dialogText[index];
+            playerUI.material.color = new Color(0.3f, 0.3f, 0.3f);
+            personUI.material.color = Color.white;
         }
 
         index++;
@@ -74,8 +75,7 @@ public class TalkWithPerson : MonoBehaviour
         //reset variables
         isTalking = false;
         index = 0;
-        playerSpeechBubble.SetActive(false);
-        personSpeechBubble.SetActive(false);
+        speechBubble.SetActive(false);
 
         GameManager.Instance.Invoke("StartConvinceMode", 1f);
     }
