@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class Follower : MonoBehaviour
@@ -18,6 +19,7 @@ public class Follower : MonoBehaviour
     FollowerCard card;
     bool isCommander;
     Renderer rend;
+    Material NPCArt;
 
     CampQuoteSpeechBubble speechBubble;
 
@@ -32,6 +34,7 @@ public class Follower : MonoBehaviour
         card.gameObject.SetActive(false);
         rend = GetComponentInChildren<Renderer>();
         speechBubble = GetComponentInChildren<CampQuoteSpeechBubble>();
+        rend.material = NPCArt;
     }
 
     private void Update()
@@ -56,6 +59,11 @@ public class Follower : MonoBehaviour
     {
         dieValue = newDieValue;
         card?.SetDieValue(dieValue);
+    }
+
+    public void SetNPCArt(Material mat)
+    {
+        NPCArt = mat;
     }
 
     public void SetDestination(Vector3 position)

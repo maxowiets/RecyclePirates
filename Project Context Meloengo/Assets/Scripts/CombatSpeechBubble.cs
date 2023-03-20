@@ -21,8 +21,6 @@ public class CombatSpeechBubble : MonoBehaviour
     {
         CancelInvoke();
         anim.SetTrigger("Start");
-
-        Debug.Log("POP BUBBLVE");
         switch (mentalStateValue)
         {
             case 0:
@@ -41,7 +39,7 @@ public class CombatSpeechBubble : MonoBehaviour
                 break;
         }
 
-        Invoke("StopSpeechBubble", 1.3f);
+        Invoke("StopSpeechBubble", 2.5f);
     }
 
     void StopSpeechBubble()

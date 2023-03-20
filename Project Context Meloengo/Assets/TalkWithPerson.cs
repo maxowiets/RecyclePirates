@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TalkWithPerson : MonoBehaviour
 {
     public List<DialogPreset> dialog;
-    DialogPreset currentDialog;
+    public DialogPreset currentDialog;
     public Animator anim;
     bool isTalking = false;
     int index;
 
     public GameObject playerSpeechBubble;
     public GameObject personSpeechBubble;
+    public RawImage NPCUI;
     public TextMeshProUGUI playerText;
     public TextMeshProUGUI personText;
 
@@ -35,10 +37,10 @@ public class TalkWithPerson : MonoBehaviour
         index = 0;
         playerSpeechBubble.SetActive(false);
         personSpeechBubble.SetActive(false);
-        currentDialog = dialog[Random.Range(0, dialog.Count)];
         GameManager.Instance.timeManager.SetRotationSpeed(0f);
         GameManager.Instance.playerMovement.enabled = false;
         GameManager.Instance.playerController.enabled = false;
+        NPCUI.texture = GameManager.Instance.currentPerson.characterImageUI;
         Invoke("NextDialog", 1f);
     }
 

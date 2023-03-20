@@ -35,11 +35,19 @@ public class GameManager : MonoBehaviour
     public TimeManager timeManager;
     public TalkWithPerson talkWithPerson;
 
-    Person currentPerson;
+    public Person currentPerson;
+
+    public ConvoMode convoMode;
 
     private void Start()
     {
         ResetDay();
+    }
+
+    public void ContinueConversation()
+    {
+        talkWithPerson.gameObject.SetActive(true);
+        talkWithPerson.StartConversation();
     }
 
     public void StartConversation(Person person)
@@ -49,6 +57,8 @@ public class GameManager : MonoBehaviour
             playerInteraction.gameObject.SetActive(false);
             currentPerson = person;
             talkWithPerson.gameObject.SetActive(true);
+            convoMode = ConvoMode.PREBATTLE;
+            talkWithPerson.currentDialog = currentPerson.preBattleDialog[Random.Range(0, currentPerson.preBattleDialog.Count)];
             talkWithPerson.StartConversation();
         }
     }
@@ -82,7 +92,7 @@ public class GameManager : MonoBehaviour
             {
                 corpBuilding.interactable = false;
             }
-            energyManager.UseEnergy();
+            energyManager.DecreaseEnergy();
         }
     }
 
@@ -96,4 +106,12 @@ public class GameManager : MonoBehaviour
         }
         timeManager.ResetDay();
     }
+}
+
+public enum ConvoMode
+{
+    PREBATTLE = 0,
+    PREPREBATTLE,
+    INBATTLE,
+    POSTBATTLE,
 }

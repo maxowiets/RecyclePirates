@@ -30,7 +30,7 @@ public class EnergyManager : MonoBehaviour
         UpdateUI();
     }
 
-    public void UseEnergy()
+    public void DecreaseEnergy()
     {
         currentEnergy--;
         UpdateUI();

@@ -9,10 +9,23 @@ public class Camp : MonoBehaviour
     public float ritualDurationPercentage = 10;
     public float ritualTimeSpeedUp = 2;
     bool ritualSucceeded = false;
+    public Animator textAnim;
+
+    PlayerMovement player;
+    bool isRitualOn;
 
     private void Start()
     {
+        player = GameManager.Instance.playerMovement;
         CampUI.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (isRitualOn)
+        {
+            player.transform.position = Vector3.MoveTowards(player.transform.position, transform.position + Vector3.up, player.movespeed * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -49,6 +62,8 @@ public class Camp : MonoBehaviour
         //enable player movement
         GameManager.Instance.playerMovement.enabled = true;
         GameManager.Instance.playerController.enabled = true;
+        isRitualOn = false;
+        player.anim.SetBool("Walking", false);
 
         if (ritualSucceeded)
         {
@@ -65,14 +80,18 @@ public class Camp : MonoBehaviour
         float timeNeeded = GameManager.Instance.timeManager.dayDuration * ritualDurationPercentage * 0.01f;
         if (timeNeeded > GameManager.Instance.timeManager.GetRemainingTime())
         {
+            textAnim.SetTrigger("Start");
             Debug.Log("Not Enough Time For Ritual");
             EndRitual();
             yield return 0;
+            yield break;
         }
 
         //disable player movement
         GameManager.Instance.playerMovement.enabled = false;
         GameManager.Instance.playerController.enabled = false;
+        isRitualOn = true;
+        player.anim.SetBool("Walking", true);
 
         //set followers in circle position around the middle
         List<Follower> followers = GameManager.Instance.playerFollowers.GetAllFollowers();
@@ -108,8 +127,11 @@ public class Camp : MonoBehaviour
         timeNeeded = GameManager.Instance.timeManager.dayDuration * ritualDurationPercentage * 0.01f;
         if (timeNeeded > GameManager.Instance.timeManager.GetRemainingTime())
         {
+            textAnim.SetTrigger("Start");
             Debug.Log("Not Enough Time For Ritual");
             EndRitual();
+            yield return 0;
+            yield break;
         }
         Invoke("EndRitual", timeNeeded / ritualTimeSpeedUp);
         GameManager.Instance.timeManager.SetRotationSpeed(ritualTimeSpeedUp);
