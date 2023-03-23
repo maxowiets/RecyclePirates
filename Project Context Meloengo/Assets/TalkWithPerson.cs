@@ -38,8 +38,8 @@ public class TalkWithPerson : MonoBehaviour
         GameManager.Instance.timeManager.SetRotationSpeed(0f);
         GameManager.Instance.playerMovement.enabled = false;
         GameManager.Instance.playerController.enabled = false;
-        playerUI.material.color = Color.white;
-        personUI.material.color = Color.white;
+        playerUI.material.color = new Color(0.3f, 0.3f, 0.3f);
+        personUI.material.color = new Color(0.3f, 0.3f, 0.3f);
         personUI.texture = GameManager.Instance.currentPerson.characterImageUI;
         Invoke("NextDialog", 1f);
     }

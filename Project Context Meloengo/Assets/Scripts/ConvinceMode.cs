@@ -89,7 +89,7 @@ public class ConvinceMode : MonoBehaviour
         Invoke("ThrowDice", 1f);
         Invoke("CalculateDieAmount", 2f);
         Invoke("CheckIfPersonConvinced", 3f);
-        Invoke("CanContinueConvinving", 6f);
+        Invoke("CanContinueConvinving", 4f);
     }
 
     void ThrowDice()

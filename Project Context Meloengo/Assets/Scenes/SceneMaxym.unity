@@ -359,8 +359,8 @@ MonoBehaviour:
   - {fileID: 1885782000}
   - {fileID: 1815408127}
   CampUI: {fileID: 421777059}
-  ritualDurationPercentage: 60
-  ritualTimeSpeedUp: 1
+  ritualDurationPercentage: 15
+  ritualTimeSpeedUp: 2.5
   textAnim: {fileID: 1747015072}
 --- !u!54 &66330606
 Rigidbody:
@@ -1982,6 +1982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce535d93f46045c439b487158c24499f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offsetMultiplier: 5
 --- !u!65 &574455039
 BoxCollider:
   m_ObjectHideFlags: 0
