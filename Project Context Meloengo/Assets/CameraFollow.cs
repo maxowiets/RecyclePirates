@@ -31,4 +31,9 @@ public class CameraFollow : MonoBehaviour
     {
         offsetMultiplier = multiplier;
     }
+
+    public void ResetCameraOffsetMultiplier()
+    {
+        offsetMultiplier = 1f;
+    }
 }

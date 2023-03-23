@@ -4,23 +4,21 @@ using UnityEngine;
 
 public class CameraOffsetChanger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float offsetMultiplier = 1f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<CharacterController>())
         {
-            Camera.main.GetComponent<CameraFollow>().SetCameraOffsetMultiplier(10f / Mathf.Abs(transform.position.z - other.transform.position.z));
+            Camera.main.GetComponent<CameraFollow>().SetCameraOffsetMultiplier(offsetMultiplier);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<CharacterController>())
+        {
+            Camera.main.GetComponent<CameraFollow>().ResetCameraOffsetMultiplier();
         }
     }
 }

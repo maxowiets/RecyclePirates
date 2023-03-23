@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerFollowing : MonoBehaviour
 {
     public Follower follower;
+    public Material baseNPCArt;
     List<Follower> followers = new List<Follower>();
     public float followerDistance = 1f;
     public int formationWidth = 5;
@@ -113,8 +114,14 @@ public class PlayerFollowing : MonoBehaviour
 
     public void AddToFollowerList(int dieValue)
     {
+        AddToFollowerList(dieValue, baseNPCArt);
+    }
+
+    public void AddToFollowerList(int dieValue, Material mat)
+    {
         var newFollower = Instantiate(follower, transform.position, Quaternion.identity);
         newFollower.GetComponent<Follower>().SetDieValue(dieValue);
+        newFollower.GetComponent<Follower>().SetNPCArt(mat);
         followers.Add(newFollower);
     }
 

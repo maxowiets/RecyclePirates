@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a25584af770dc459a05a038ad843bb, type: 3}
+  m_Name: Dialog2
+  m_EditorClassIdentifier: 
+  dialogText:
+  - Hey, I want to ask you something.
+  - Have you given any attention to how big corporations are affecting our world
+    and are negatively impacting the environment?
+  - I have, what they do is definitely worrying.
+  - It is disgusting how some businesses treat our world.
+  - Exactly, that's why I believe we need to take action.
+  - We can do that by protesting.
+  - Are you interested in joining me to gather more people to protest?
+  isPlayerTalking: 01010000010101

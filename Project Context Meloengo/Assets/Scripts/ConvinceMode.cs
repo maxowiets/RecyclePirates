@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ConvinceMode : MonoBehaviour
@@ -17,13 +18,28 @@ public class ConvinceMode : MonoBehaviour
 
     public GameObject convinceUI;
 
+    public TextMeshProUGUI diceAmountText;
+
+    int convinced;
+
     private void Start()
     {
+        diceAmountText.gameObject.SetActive(false);
         convinceUI.SetActive(false);
     }
 
     public void StartConvinceMode(Person person)
     {
+        if (GameManager.Instance.convoMode == ConvoMode.POSTBATTLE || GameManager.Instance.energyManager.currentEnergy <= 0)
+        {
+            ReturnToLevel();
+            return;
+        }
+        else if (GameManager.Instance.convoMode == ConvoMode.INBATTLE || GameManager.Instance.convoMode == ConvoMode.PREPREBATTLE)
+        {
+            Invoke("EnableUI", 0.1f);
+            return;
+        }
         currentPerson = person;
 
         //PlayerStuff
@@ -50,6 +66,13 @@ public class ConvinceMode : MonoBehaviour
 
         //set time multiplier to 0
         GameManager.Instance.timeManager.SetRotationSpeed(0);
+
+        //Preprebattle Text
+        if (GameManager.Instance.convoMode == ConvoMode.PREBATTLE)
+        {
+            CanContinueConvinving();
+            return;
+        }
 
         //enable ui
         Invoke("EnableUI", 0.1f);
@@ -87,52 +110,81 @@ public class ConvinceMode : MonoBehaviour
         {
             dieAmount += Random.Range(0, followerDie.GetDieValue()) + 1;
         }
+
+        diceAmountText.gameObject.SetActive(true);
+        diceAmountText.text = dieAmount.ToString(); 
     }
 
     void CheckIfPersonConvinced()
     {
-        int conv = currentPerson.CheckIfConvinced(dieAmount);
+        convinced = currentPerson.CheckIfConvinced(dieAmount);
 
-        if (conv == 3)
+        if (convinced == 3)
         {
             GameManager.Instance.energyManager.IncreaseEnergy();
         }
-        else if (conv == 2)
+        else if (convinced == 2)
         {
             //
         }
-        else if (conv == 1)
+        else if (convinced == 1)
         {
-            GameManager.Instance.energyManager.UseEnergy();
+            GameManager.Instance.energyManager.DecreaseEnergy();
         }
     }
 
     void CanContinueConvinving()
     {
-        //Exit Convince Mode if...
-        if (GameManager.Instance.energyManager.currentEnergy == 0 || currentPerson.mentalState >= 3 || currentPerson.mentalState <= 0)
+        diceAmountText.gameObject.SetActive(false);
+        if (GameManager.Instance.convoMode == ConvoMode.PREBATTLE)
         {
-            if (currentPerson.mentalState >= 3)
-            {
-                //Increase commanders EE
-            }
-            else if (currentPerson.mentalState <= 0)
-            {
-                //Decrease commanders EE
-            }
-            ReturnToLevel();
+            GameManager.Instance.convoMode = ConvoMode.PREPREBATTLE;
+            GameManager.Instance.talkWithPerson.currentDialog = currentPerson.prePreBattleDialog[Random.Range(0, currentPerson.prePreBattleDialog.Count)];
+            GameManager.Instance.ContinueConversation();
+            return;
+        }
+        //if totally convinced
+        else if (currentPerson.mentalState >= 3)
+        {
+            GameManager.Instance.convoMode = ConvoMode.POSTBATTLE;
+            GameManager.Instance.talkWithPerson.currentDialog = currentPerson.postBattleGoodDialog[Random.Range(0, currentPerson.postBattleGoodDialog.Count)];
+            //Increase Commander EE
         }
 
-        //Continue Convince Mode if...
-        else if(GameManager.Instance.energyManager.currentEnergy > 0)
+        //if totally depressed
+        else if (currentPerson.mentalState <= 0)
         {
-            convinceUI.SetActive(true);
+            GameManager.Instance.convoMode = ConvoMode.POSTBATTLE;
+            GameManager.Instance.talkWithPerson.currentDialog = currentPerson.postBattleBadDialog[Random.Range(0, currentPerson.postBattleBadDialog.Count)];
+            //Decrease Commander EE
         }
+
+        //if convinced
+        else if (convinced == 3)
+        {
+            GameManager.Instance.convoMode = ConvoMode.INBATTLE;
+            GameManager.Instance.talkWithPerson.currentDialog = currentPerson.goodDialog[Random.Range(0, currentPerson.goodDialog.Count)];
+        }
+
+        //if nothing
+        else if (convinced == 2)
+        {
+            GameManager.Instance.convoMode = ConvoMode.INBATTLE;
+            GameManager.Instance.talkWithPerson.currentDialog = currentPerson.badDialog[Random.Range(0, currentPerson.badDialog.Count)];
+        }
+
+        //if not convinced
+        else if (convinced == 1)
+        {
+            GameManager.Instance.convoMode = ConvoMode.INBATTLE;
+            GameManager.Instance.talkWithPerson.currentDialog = currentPerson.badDialog[Random.Range(0, currentPerson.badDialog.Count)];
+        }
+
+        GameManager.Instance.ContinueConversation();
     }
 
     public void ReturnToLevel()
     {
-        Debug.Log("test");
         //set player position
         GameManager.Instance.playerMovement.transform.position = playerLastPos;
 

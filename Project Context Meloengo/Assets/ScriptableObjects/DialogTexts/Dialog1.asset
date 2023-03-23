@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a25584af770dc459a05a038ad843bb, type: 3}
+  m_Name: Dialog1
+  m_EditorClassIdentifier: 
+  dialogText:
+  - Hey, have you ever been to a climate change protest or engaged in activism?
+  - It can be a powerful experience.
+  - I am organizing one too, would you like to join?
+  - I've never been part of any of those.
+  - "I don\u2019t think protesting leads to major change, so I\u2019m not sure if
+    participating is worthwhile."
+  - Actually, protests have already led to some great victories, you know.
+  - For instance, thousands of people protested in Germany to urge the government
+    to phase out coal power.
+  - The government also just declared that coal will be phased out by 2038.
+  - That's quite impressive, but for some reason, I doubt this protest will have
+    the same effect.
+  - Every voice matters.
+  - Have a look at the climate strikes organized by youth all across the world.
+  - Millions of people have joined, young people, like Greta Thunberg, in calling
+    for urgent climate action.
+  - They started from a small group organizing demonstrations in their local areas,
+    to now millions of people joining.
+  isPlayerTalking: 01010100000101010001010101

@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public CharacterController playerController;
     public PlayerMovement playerMovement;
     public PlayerFollowing playerFollowers;
+    public PlayerInteraction playerInteraction;
 
     public ConvinceMode convinceMode;
     public PersonSpawner personSpawner;
@@ -32,18 +33,41 @@ public class GameManager : MonoBehaviour
     public DieManager dieManager;
     public CorpBuilding corpBuilding;
     public TimeManager timeManager;
+    public TalkWithPerson talkWithPerson;
+
+    public Person currentPerson;
+
+    public ConvoMode convoMode;
 
     private void Start()
     {
         ResetDay();
     }
 
-    public void StartConvinceMode(Person person)
+    public void ContinueConversation()
+    {
+        talkWithPerson.gameObject.SetActive(true);
+        talkWithPerson.StartConversation();
+    }
+
+    public void StartConversation(Person person)
     {
         if (energyManager.currentEnergy > 0)
         {
-            convinceMode.StartConvinceMode(person);
+            playerInteraction.gameObject.SetActive(false);
+            currentPerson = person;
+            talkWithPerson.gameObject.SetActive(true);
+            convoMode = ConvoMode.PREBATTLE;
+            talkWithPerson.currentDialog = currentPerson.preBattleDialog[Random.Range(0, currentPerson.preBattleDialog.Count)];
+            talkWithPerson.StartConversation();
         }
+    }
+
+    public void StartConvinceMode()
+    {
+        talkWithPerson.gameObject.SetActive(false);
+        convinceMode.StartConvinceMode(currentPerson);
+        playerInteraction.gameObject.SetActive(true);
     }
 
     public void TakeOverCorpBuilding()
@@ -68,7 +92,7 @@ public class GameManager : MonoBehaviour
             {
                 corpBuilding.interactable = false;
             }
-            energyManager.UseEnergy();
+            energyManager.DecreaseEnergy();
         }
     }
 
@@ -82,4 +106,12 @@ public class GameManager : MonoBehaviour
         }
         timeManager.ResetDay();
     }
+}
+
+public enum ConvoMode
+{
+    PREBATTLE = 0,
+    PREPREBATTLE,
+    INBATTLE,
+    POSTBATTLE,
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PersonSpawner : MonoBehaviour
 {
-    public Person personPrefab;
+    public List<Person> personPrefabs;
     List<Person> persons = new List<Person>();
     public int amountOfPersonsPerDay = 1;
     public List<Transform> spawnLocations;
@@ -21,7 +21,7 @@ public class PersonSpawner : MonoBehaviour
         for (int i = 0; i < amountOfPersonsPerDay; i++)
         {
             int rand = Random.Range(0, tempList.Count);
-            persons.Add(Instantiate(personPrefab, tempList[rand].position, Quaternion.identity));
+            persons.Add(Instantiate(personPrefabs[Random.Range(0, personPrefabs.Count)], tempList[rand].position, Quaternion.identity));
             tempList.RemoveAt(rand);
         }
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Person : MonoBehaviour
 {
@@ -17,6 +18,19 @@ public class Person : MonoBehaviour
     public int mentalState = 1;
 
     public GameObject bar;
+
+    public CombatSpeechBubble combatSpeechBubble;
+
+    public Texture2D characterImageUI;
+
+    public Material characterMaterial;
+
+    public List<DialogPreset> preBattleDialog;
+    public List<DialogPreset> prePreBattleDialog;
+    public List<DialogPreset> postBattleGoodDialog;
+    public List<DialogPreset> postBattleBadDialog;
+    public List<DialogPreset> goodDialog;
+    public List<DialogPreset> badDialog;
 
     private void Start()
     {
@@ -43,15 +57,18 @@ public class Person : MonoBehaviour
         if (thrownDiceAmount >= convinceAmount)
         {
             IncreaseMentalState();
+            combatSpeechBubble.PopSpeechBubble(mentalState);
             return 3;
         }
         else if (thrownDiceAmount > (int)((float)convinceAmount * 0.7f))
         {
+            combatSpeechBubble.PopSpeechBubble(mentalState);
             return 2;
         }
         else
         {
             DecreaseMentalState();
+            combatSpeechBubble.PopSpeechBubble(mentalState);
             return 1;
         }
     }
@@ -93,7 +110,7 @@ public class Person : MonoBehaviour
 
     void SucceedInteraction()
     {
-        GameManager.Instance.playerFollowers.AddToFollowerList(dieValue);
+        GameManager.Instance.playerFollowers.AddToFollowerList(dieValue, characterMaterial);
         GameManager.Instance.personSpawner.DestroyPerson(this);
     }
 

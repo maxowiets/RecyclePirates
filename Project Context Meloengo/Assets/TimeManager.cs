@@ -8,23 +8,25 @@ public class TimeManager : MonoBehaviour
     public float dayDuration = 180;
     float maxAngleSun = 120;
     float currentTime;
-    public Transform sun;
+    public Light sunLight;
     Quaternion startTransformSun;
     float rotationSpeed;
     float timeSpeedMultiplier = 1;
 
+    public AnimationCurve shadowCurve;
 
     // Start is called before the first frame update
     void Start()
     {
-        startTransformSun = sun.rotation;
+        startTransformSun = sunLight.transform.rotation;
         rotationSpeed = maxAngleSun / dayDuration;
     }
 
     // Update is called once per frame
     void Update()
     {
-        sun.RotateAround(sun.position, Vector3.forward, rotationSpeed * timeSpeedMultiplier * Time.deltaTime);
+        sunLight.transform.RotateAround(sunLight.transform.position, Vector3.forward, rotationSpeed * timeSpeedMultiplier * Time.deltaTime);
+        sunLight.shadowStrength = shadowCurve.Evaluate(currentTime / dayDuration);
         currentTime += timeSpeedMultiplier * Time.deltaTime;
         if (currentTime >= dayDuration)
         {
@@ -35,14 +37,13 @@ public class TimeManager : MonoBehaviour
     public void SetRotationSpeed(float newSpeed)
     {
         timeSpeedMultiplier = newSpeed;
-        Debug.Log(newSpeed);
     }
 
     public void ResetDay()
     {
         currentTime = 0;
         timeSpeedMultiplier = 1;
-        sun.rotation = startTransformSun;
+        sunLight.transform.rotation = startTransformSun;
     }
 
     public float GetRemainingTime()
