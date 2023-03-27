@@ -34,6 +34,8 @@ public class Person : MonoBehaviour
 
     private void Start()
     {
+        convinceAmount = (int)(convinceAmount * Random.Range(0.8f, 1.2f) * GameManager.Instance.timeManager.GetCurrentDay());
+
         tmpValue.text = convinceAmount.ToString();
         tmpValue.gameObject.SetActive(false);
 

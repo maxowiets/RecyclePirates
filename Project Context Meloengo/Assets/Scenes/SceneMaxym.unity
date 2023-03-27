@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.015
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -2620,7 +2620,7 @@ Transform:
   m_GameObject: {fileID: 870235849}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2.2, z: 2}
+  m_LocalScale: {x: 1.6, y: 2.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 248829048}
@@ -4900,6 +4900,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   personPrefabs:
   - {fileID: 1583426293856050788, guid: 148f9f149c1f3fa4eb5d0a2687bc986f, type: 3}
+  - {fileID: 1583426293856050788, guid: 64beeb51536bc1c49bab5e453a36719f, type: 3}
+  - {fileID: 1583426293856050788, guid: f85b6298ad3eb624289656296b658f0b, type: 3}
   amountOfPersonsPerDay: 4
   spawnLocations:
   - {fileID: 839305992}

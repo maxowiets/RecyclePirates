@@ -113,7 +113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429303609630262996}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.75, z: 0.25}
+  m_LocalPosition: {x: 0, y: 0.884, z: 0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 1583426293856050789}
   - component: {fileID: 1583426293856050788}
   m_Layer: 0
-  m_Name: PlantGrandma
+  m_Name: Kiddo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -263,16 +263,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0597c01eabfc25409a3ad1526a0ed29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  convinceAmount: 4
-  dieValue: 2
+  convinceAmount: 5
+  dieValue: 4
   tmpValue: {fileID: 1583426294446395592}
   interactable: 1
   cloud: {fileID: 429303609630262996}
   mentalState: 1
   bar: {fileID: 131278347674145255}
   combatSpeechBubble: {fileID: 563647230601954056}
-  characterImageUI: {fileID: 2800000, guid: 778263a5cc940ee459a488616cafc37c, type: 3}
-  characterMaterial: {fileID: 2100000, guid: f6fd431adc2b89043b984ee06db1ee11, type: 2}
+  characterImageUI: {fileID: 2800000, guid: b3bf0495619491e4a99ca579e1d3cbd0, type: 3}
+  characterMaterial: {fileID: 2100000, guid: 3bb56569b37d3244b89a796052df36a3, type: 2}
   preBattleDialog:
   - {fileID: 11400000, guid: dab933aae3621ea4aa35ce4725d7c735, type: 2}
   prePreBattleDialog:
@@ -660,7 +660,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4536145343359186465}
   m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.6, y: 2.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -695,7 +695,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f6fd431adc2b89043b984ee06db1ee11, type: 2}
+  - {fileID: 2100000, guid: 3bb56569b37d3244b89a796052df36a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
