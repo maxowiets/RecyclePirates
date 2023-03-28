@@ -8,6 +8,7 @@ public class TimeManager : MonoBehaviour
     public float dayDuration = 180;
     float maxAngleSun = 120;
     float currentTime;
+    int currentDay;
     public Light sunLight;
     Quaternion startTransformSun;
     float rotationSpeed;
@@ -18,6 +19,7 @@ public class TimeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentDay = 0;
         startTransformSun = sunLight.transform.rotation;
         rotationSpeed = maxAngleSun / dayDuration;
     }
@@ -44,10 +46,16 @@ public class TimeManager : MonoBehaviour
         currentTime = 0;
         timeSpeedMultiplier = 1;
         sunLight.transform.rotation = startTransformSun;
+        currentDay++;
     }
 
     public float GetRemainingTime()
     {
         return dayDuration - currentTime;
+    }
+
+    public int GetCurrentDay()
+    {
+        return currentDay;
     }
 }
