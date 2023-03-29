@@ -42,6 +42,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Invoke("StartGame", Time.deltaTime);
+    }
+
+    void StartGame()
+    {
         ResetDay();
         tutorialScreen.gameObject.SetActive(true);
         tutorialScreen.Initialize();

@@ -274,19 +274,21 @@ MonoBehaviour:
   characterImageUI: {fileID: 2800000, guid: 4dbdde0bea2ecb94281fabdb574e4e8b, type: 3}
   characterMaterial: {fileID: 2100000, guid: ab192ec3da360614c96bc999663c0c5f, type: 2}
   preBattleDialog:
-  - {fileID: 11400000, guid: dab933aae3621ea4aa35ce4725d7c735, type: 2}
+  - {fileID: 11400000, guid: 8e98ecbace6a9f74cb29338af6c84a9d, type: 2}
   prePreBattleDialog:
-  - {fileID: 11400000, guid: a184abacc21942b4ea48c95f7b04f37c, type: 2}
+  - {fileID: 11400000, guid: dbfbc0758a8d0254da65e9e99dd9756f, type: 2}
   postBattleGoodDialog:
-  - {fileID: 11400000, guid: 6e9fbfbda47f5194d9f3307186feb32c, type: 2}
+  - {fileID: 11400000, guid: 5739c8b97becf6049920b4a7702e9273, type: 2}
   postBattleBadDialog:
-  - {fileID: 11400000, guid: 24038b2249408034f9a00c0af989b687, type: 2}
+  - {fileID: 11400000, guid: ab5f5caf64ae9e54f9218fed8476ba3a, type: 2}
   goodDialog:
-  - {fileID: 11400000, guid: b79b611892c8c714a92f333d47749392, type: 2}
-  - {fileID: 11400000, guid: df3985b85518ef641adfc69aa0bc2601, type: 2}
+  - {fileID: 11400000, guid: de60243ab8717d94299ce23a5d8deb64, type: 2}
+  - {fileID: 11400000, guid: 9356f250cd42ab84cb0cb0e2e159c9f8, type: 2}
+  - {fileID: 11400000, guid: 72e13d3e63c3f9d40b097d561f89cb74, type: 2}
   badDialog:
-  - {fileID: 11400000, guid: 017bd7d7bb6ae6c42a8741bb2f2d0f29, type: 2}
-  - {fileID: 11400000, guid: 1aeb5af468e48ee4d960f27049e015b8, type: 2}
+  - {fileID: 11400000, guid: 288d5aad812feab42b34a754ac5498d3, type: 2}
+  - {fileID: 11400000, guid: 4b2fc1fdbb6071b4390759b524457323, type: 2}
+  - {fileID: 11400000, guid: f101a3d7ba2d10e45885e9fe33e401a8, type: 2}
 --- !u!1 &1583426294446395593
 GameObject:
   m_ObjectHideFlags: 0
