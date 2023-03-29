@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public CorpBuilding corpBuilding;
     public TimeManager timeManager;
     public TalkWithPerson talkWithPerson;
+    public TutorialScreen tutorialScreen;
 
     public Person currentPerson;
 
@@ -42,6 +43,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         ResetDay();
+        tutorialScreen.gameObject.SetActive(true);
+        tutorialScreen.Initialize();
     }
 
     public void ContinueConversation()
