@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a7c4ddae453500849ad9ee03ab87ed5a
+guid: a726d748d8c11c740af50fe4cd77375e
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: CoinMat
-    second: {fileID: 2100000, guid: 981ecd54f85699b43ba40575ed075be5, type: 2}
+      name: Material.001
+    second: {fileID: 2100000, guid: 18d1ddeb36acf184b9df0ca7aa5c0db0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
