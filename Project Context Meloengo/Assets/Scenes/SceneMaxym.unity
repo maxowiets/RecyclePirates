@@ -3878,7 +3878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cb76ceef443aa04eb16fbd04936b007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  convinceAmount: 10
+  convinceAmount: 200
   tmpValue: {fileID: 2074089281}
   interactable: 1
 --- !u!4 &900932583
@@ -6580,6 +6580,7 @@ MonoBehaviour:
   - {fileID: 1583426293856050788, guid: 148f9f149c1f3fa4eb5d0a2687bc986f, type: 3}
   - {fileID: 1583426293856050788, guid: 64beeb51536bc1c49bab5e453a36719f, type: 3}
   - {fileID: 1583426293856050788, guid: f85b6298ad3eb624289656296b658f0b, type: 3}
+  - {fileID: 1583426293856050788, guid: 0a97fd65dec785345ae05ae21b3526c1, type: 3}
   amountOfPersonsPerDay: 4
   spawnLocations:
   - {fileID: 839305992}

@@ -45,7 +45,10 @@ public class TimeManager : MonoBehaviour
     {
         currentTime = 0;
         timeSpeedMultiplier = 1;
-        sunLight.transform.rotation = startTransformSun;
+        if (startTransformSun.y != 0)
+        {
+            sunLight.transform.rotation = startTransformSun;
+        }
         currentDay++;
     }
 

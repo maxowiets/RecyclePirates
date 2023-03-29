@@ -271,7 +271,7 @@ MonoBehaviour:
   mentalState: 1
   bar: {fileID: 131278347674145255}
   combatSpeechBubble: {fileID: 563647230601954056}
-  characterImageUI: {fileID: 2800000, guid: df9f4f92275b90546bdfe7f85dbee0ab, type: 3}
+  characterImageUI: {fileID: 2800000, guid: 0e4197b04051d1b45ad53f4fad89db25, type: 3}
   characterMaterial: {fileID: 2100000, guid: 830475ac4fa34a64bb306fb833053d25, type: 2}
   preBattleDialog:
   - {fileID: 11400000, guid: b30408dd31a8d444f972ca8d100be0c9, type: 2}
@@ -697,7 +697,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f6fd431adc2b89043b984ee06db1ee11, type: 2}
+  - {fileID: 2100000, guid: 830475ac4fa34a64bb306fb833053d25, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
