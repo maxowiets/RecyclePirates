@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a25584af770dc459a05a038ad843bb, type: 3}
+  m_Name: SnobbyGuyBad2
+  m_EditorClassIdentifier: 
+  dialogText:
+  - "I don\u2019t think so."
+  - "Protests won\u2019t do anything, because the government won\u2019t do anything
+    anyway."
+  - What are they gonna do about it?
+  - I understand your concern.
+  - We can create unrest and shine a light on the problem.
+  - We can put pressure on the government.
+  - "And even if the government doesn\u2019t do anything, we can still sue those
+    that are responsible and sign petitions."
+  isPlayerTalking: 00000001010101

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a25584af770dc459a05a038ad843bb, type: 3}
+  m_Name: SnobbyGuyPrePreBattle
+  m_EditorClassIdentifier: 
+  dialogText:
+  - I dunno.
+  - "I haven\u2019t seen anything crucial on the web."
+  - None of the influencers on Chatflix, InstandPic or YouVid are doing anything
+    about it, so why should I!?
+  - "Uhm\u2026 Well we do have to do something."
+  - Look around you.
+  - It is a mess!
+  - But we can do something about it!
+  - We just have to do it together as a collective.
+  - I dunno about you, but I have better things to do.
+  - Those clacks don't click themselves.
+  - 'That might be so, but nothing will be solved if we stay passive and ignore the
+    situation at hand! '
+  isPlayerTalking: 0000000101010101000001

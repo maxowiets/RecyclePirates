@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a25584af770dc459a05a038ad843bb, type: 3}
+  m_Name: KiddoPrePreBattle
+  m_EditorClassIdentifier: 
+  dialogText:
+  - Pff, no way I am going to join you!
+  - I am not a team player.
+  - I bet you want to steal all of my ideas!
+  - That is not true.
+  - We could use your inventions and data to secure a better future for us.
+  - Really?
+  - You better start talking, lady.
+  - And maybe you can get me, the greatest scientist to exist, on your side.
+  isPlayerTalking: 0000000101000000

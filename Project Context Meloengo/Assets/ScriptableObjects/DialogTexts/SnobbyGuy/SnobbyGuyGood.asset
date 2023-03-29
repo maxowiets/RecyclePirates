@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a25584af770dc459a05a038ad843bb, type: 3}
+  m_Name: SnobbyGuyGood
+  m_EditorClassIdentifier: 
+  dialogText:
+  - "Alright I\u2019ll hear you out."
+  - "Actually, I might have seen some influencers join a protest, but I haven\u2019t
+    seen any results from that."
+  - How will this be different?
+  isPlayerTalking: 000000
