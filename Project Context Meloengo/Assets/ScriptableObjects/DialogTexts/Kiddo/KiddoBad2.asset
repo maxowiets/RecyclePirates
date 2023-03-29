@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a25584af770dc459a05a038ad843bb, type: 3}
+  m_Name: KiddoBad2
+  m_EditorClassIdentifier: 
+  dialogText:
+  - Nature and technology are complete opposites, are they not?
+  - It is a constant battle.
+  - We cut trees to build shelter, we use fossil fuels to power out factories.
+  - Technology has helped with preventing climate change.
+  - It can bring us many wonderful things like solar panels and wind turbines.
+  - Together, we can make really wonderful things!
+  isPlayerTalking: 000000010101

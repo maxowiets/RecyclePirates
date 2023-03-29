@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a25584af770dc459a05a038ad843bb, type: 3}
+  m_Name: SnobbyGuyPreBattle
+  m_EditorClassIdentifier: 
+  dialogText:
+  - Hey, you seem like a reasonable guy.
+  - Could you hear me out for a second?
+  - "Sure, what is it\u2026?"
+  - "As you may have noticed, things haven\u2019t been going very well in regards
+    to the environment."
+  - We are trying to make a stand and we need your help.
+  - The climate is changing rapidly for the worse and we need to do something.
+  - So?
+  - How does that affect me?
+  - "It\u2019s not like it\u2019s my problem."
+  isPlayerTalking: 010100010101000000

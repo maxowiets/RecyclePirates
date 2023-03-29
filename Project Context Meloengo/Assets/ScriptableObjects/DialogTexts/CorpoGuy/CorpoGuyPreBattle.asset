@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a25584af770dc459a05a038ad843bb, type: 3}
+  m_Name: CorpoGuyPreBattle
+  m_EditorClassIdentifier: 
+  dialogText:
+  - Hey missy!
+  - I see your social skills.
+  - Our company can surely use that.
+  - I could talk to the higher ups so they can hire you.
+  - What do you say?
+  - You are with The Corporation?
+  - No thanks, you guys are way too harmful to the planet.
+  - "Oh gosh, you are one of those climate change believers aren\u2019t you?"
+  - Climate change is a real thing!
+  - And we should all work together to prevent it as much as possible!
+  isPlayerTalking: 00000000000101000101
