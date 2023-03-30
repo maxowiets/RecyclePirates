@@ -7,10 +7,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: City_Metal_10
+  m_Name: City_Metal_8 1
   m_Shader: {fileID: 4800000, guid: 2a230514c860643f69b6a4d1871d3825, type: 3}
   m_ValidKeywords:
   - DR_LIGHT_ATTENUATION
+  - DR_OUTLINE_ON
+  - DR_RIM_ON
   - _DETAILMAPBLENDINGMODE_MULTIPLY
   - _TEXTUREBLENDINGMODE_MULTIPLY
   m_InvalidKeywords: []
@@ -20,8 +22,7 @@ Material:
   m_CustomRenderQueue: 2000
   stringTagMap:
     RenderType: Opaque
-  disabledShaderPasses:
-  - SRPDEFAULTUNLIT
+  disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -117,7 +118,7 @@ Material:
     - _FlatRimLightAlign: 0.099
     - _FlatRimSize: 0
     - _FlatSpecularEdgeSmoothness: 0
-    - _FlatSpecularSize: 0.589
+    - _FlatSpecularSize: 0.71
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -133,17 +134,17 @@ Material:
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _OutlineDepthOffset: 0
-    - _OutlineEnabled: 0
+    - _OutlineEnabled: 1
     - _OutlineScale: 1
-    - _OutlineWidth: 0.3
+    - _OutlineWidth: 0.56
     - _OverrideBakedGi: 0
     - _OverrideLightAttenuation: 1
     - _OverrideLightmapDir: 0
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _RimEnabled: 0
-    - _SelfShadingSize: 0.367
+    - _RimEnabled: 1
+    - _SelfShadingSize: 0.454
     - _ShadowEdgeSize: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
@@ -173,10 +174,10 @@ Material:
     - _DetailMapColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FlatRimColor: {r: 0.6745098, g: 0.8434084, b: 0.8784314, a: 0.85056}
-    - _FlatSpecularColor: {r: 0.90462625, g: 0.9747029, b: 1.0575209, a: 1}
+    - _FlatSpecularColor: {r: 0.5557583, g: 0.6017097, b: 0.6509434, a: 1}
     - _LightAttenuation: {r: 0, g: 1, b: 0, a: 0}
     - _LightmapDirection: {r: 0, g: 1, b: 0, a: 0}
-    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _UnityShadowColor: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}
@@ -187,7 +188,7 @@ Texture2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: z__GradientRampTex{"mode":0,"colorKeys":[{"color":{"r":0.10377359390258789,"g":0.08262727409601212,"b":0.08428580313920975,"a":1.0},"time":0.21470969915390016},{"color":{"r":0.15094339847564698,"g":0.1340453326702118,"b":0.12872909009456635,"a":1.0},"time":0.2529488205909729},{"color":{"r":0.18867921829223634,"g":0.1636246144771576,"b":0.1555713564157486,"a":1.0},"time":0.3794155716896057},{"color":{"r":0.1320754885673523,"g":0.12973925471305848,"b":0.12758991122245789,"a":1.0},"time":0.45294880867004397}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":1.0,"time":1.0}]}
+  m_Name: z__GradientRampTex{"mode":0,"colorKeys":[{"color":{"r":0.031372539699077609,"g":0.36592572927474978,"b":0.4627451002597809,"a":1.0},"time":0.16176089644432069},{"color":{"r":0.003921565134078264,"g":0.5588849782943726,"b":0.6901960968971252,"a":1.0},"time":0.34117648005485537},{"color":{"r":0.6627451181411743,"g":0.7019608020782471,"b":0.7411764860153198,"a":1.0},"time":0.6764782071113586},{"color":{"r":0.6627451181411743,"g":0.7019608020782471,"b":0.7411764860153198,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":1.0,"time":1.0}]}
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
@@ -222,7 +223,7 @@ Texture2D:
   m_ColorSpace: 1
   m_PlatformBlob: 
   image data: 1024
-  _typelessdata: ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1a1515ff1b1516ff1c1717ff1d1818ff1e1919ff201b1aff211c1cff221d1dff231f1eff25201fff262220ff272221ff272321ff272321ff282322ff282322ff282322ff282422ff292422ff292423ff292423ff2a2523ff2a2523ff2a2523ff2b2524ff2b2624ff2b2624ff2b2624ff2c2625ff2c2725ff2c2725ff2d2725ff2d2725ff2d2726ff2e2826ff2e2826ff2e2826ff2e2826ff2f2927ff2f2927ff2f2927ff302927ff302a28ff302a28ff2f2927ff2e2927ff2e2826ff2d2826ff2c2726ff2b2725ff2b2625ff2a2625ff292524ff282524ff272523ff272423ff262423ff252322ff242322ff242221ff232221ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121ff222121
+  _typelessdata: ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085d76ff085e77ff085f78ff086079ff07617bff07627cff07637dff07657fff076680ff076781ff076882ff066984ff066a85ff066b86ff066c87ff066d89ff066e8aff056f8bff05708dff05718eff05738fff057490ff057592ff057693ff047794ff047895ff047997ff047a98ff047b99ff047c9aff037d9cff037e9dff037f9eff0381a0ff0382a1ff0383a2ff0384a3ff0285a5ff0286a6ff0287a7ff0288a8ff0289aaff028aabff018bacff018cadff018dafff018fb0ff038fb0ff058fb0ff0790b0ff0990b1ff0b91b1ff0d91b1ff0f92b1ff1192b1ff1392b1ff1593b2ff1793b2ff1994b2ff1b94b2ff1d94b2ff1e95b2ff2095b2ff2296b3ff2496b3ff2697b3ff2897b3ff2a97b3ff2c98b3ff2e98b3ff3099b4ff3299b4ff349ab4ff369ab4ff389ab4ff3a9bb4ff3c9bb5ff3e9cb5ff409cb5ff429db5ff449db5ff469db5ff489eb5ff4a9eb6ff4c9fb6ff4e9fb6ff50a0b6ff52a0b6ff54a0b6ff55a1b7ff57a1b7ff59a2b7ff5ba2b7ff5da3b7ff5fa3b7ff61a3b7ff63a4b8ff65a4b8ff67a5b8ff69a5b8ff6ba6b8ff6da6b8ff6fa6b9ff71a7b9ff73a7b9ff75a8b9ff77a8b9ff79a9b9ff7ba9b9ff7da9baff7faabaff81aabaff83abbaff85abbaff87acbaff89acbaff8bacbbff8dadbbff8eadbbff90aebbff92aebbff94afbbff96afbcff98afbcff9ab0bcff9cb0bcff9eb1bcffa0b1bcffa2b2bcffa4b2bdffa6b2bdffa8b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bdffa9b3bd
   m_StreamData:
     serializedVersion: 2
     offset: 0
